@@ -1,16 +1,22 @@
-# Introduction to Git and GitHub
+# Paradise Nursery
 
-## Simple Interest Calculator
+Paradise Nursery is an online plant shop built with React and Redux Toolkit.
 
-A calculator that calculates simple interest given principal, annual rate of interest and time period in years.
+## Project name
+**Paradise Nursery** - Where Green Meets Serenity
 
+## Features
+- Landing page with a "Get Started" button
+- About Us section describing the company
+- Product listing page with plants grouped by category
+- Shopping cart with add, remove and quantity update
+- Cart icon showing the total number of items
+
+## Tech stack
+React, Redux Toolkit, Vite
+
+## Run locally
 ```
-Input:
-   p, principal amount
-   t, time period in years
-   r, annual rate of interest
-Output
-   simple interest = p*t*r
+npm install
+npm run dev
 ```
-
-_© 2022 XYZ, Inc._
