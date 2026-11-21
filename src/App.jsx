@@ -11,6 +11,10 @@ function App() {
     setShowProductList(true);
   };
 
+  const handleHomeClick = () => {
+    setShowProductList(false);
+  };
+
   return (
     <div className="app-container">
       {!showProductList ? (
@@ -29,7 +33,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <ProductList />
+        <ProductList onHome={handleHomeClick} />
       )}
     </div>
   );
