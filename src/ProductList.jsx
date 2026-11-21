@@ -44,7 +44,7 @@ const plantsArray = [
   },
 ];
 
-function ProductList() {
+function ProductList({ onHome }) {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const [showCart, setShowCart] = useState(false);
@@ -57,13 +57,17 @@ function ProductList() {
     dispatch(addItem({ name: plant.name, image: plant.image, cost: plant.cost }));
   };
 
+  const handleHomeClick = () => {
+    setShowCart(false);
+    onHome();
+  };
   const handlePlantsClick = () => setShowCart(false);
   const handleCartClick = () => setShowCart(true);
 
   return (
     <div className="product-list-page">
       <nav className="navbar">
-        <div className="navbar-brand" onClick={handlePlantsClick}>
+        <div className="navbar-brand" onClick={handleHomeClick}>
           <img className="logo" src="https://placehold.co/50x50/2e7d32/ffffff?text=PN" alt="Paradise Nursery logo" />
           <div>
             <h3>Paradise Nursery</h3>
@@ -71,9 +75,16 @@ function ProductList() {
           </div>
         </div>
         <div className="navbar-links">
+          <button className="nav-btn" onClick={handleHomeClick}>Home</button>
           <button className="nav-btn" onClick={handlePlantsClick}>Plants</button>
-          <button className="nav-btn" onClick={handleCartClick} aria-label="Shopping cart">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="#ffffff">
+          <button
+            className="nav-btn"
+            onClick={handleCartClick}
+            aria-label="Cart"
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', marginRight: '14px' }}
+          >
+            <span>Cart</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="#ffffff">
               <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
             </svg>
             <span className="cart-count">{totalQuantity}</span>
